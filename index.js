@@ -1,33 +1,29 @@
 //import the express package
 import express from 'express';
-import dotenv from 'dotenv'
-import mongoose from 'mongoose'
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
 
+dotenv.config();
 //create an instance of express server
-const app= express();
+const app = express();
 
 //
 app.use(express.json());
 
 //const variable for our PORT number
-const PORT=5000
+const PORT = 5000;
 
 
-    app.get('/', (req, res)=>{res.send("Hello World")
-    
+app.get('/', (req, res) => {
+    res.send("Hello World")
+
 });
 
-mongo.connect(process.env.PRACTICE_MONGOOSE,(error)=>{
-    if (error){
+mongoose.connect(process.env.PRACTICE_MONGOOSE, (error) => {
+    if (error) {
         return console.log("connection successful")
-    } 
-    else { 
+    } else {
         consloe.log("failed! unable to connect")
+        app.listen(PORT, () => console.log(`server is ready and up and listening to PORT: ${PORT} `));
     }
-} )
-
-app.listen(5000, () => console.log(
-    `server is ready and up and listening to PORT: ${PORT} `
-    ));
-
- 
+})
